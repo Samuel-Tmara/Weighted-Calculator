@@ -1,0 +1,20 @@
+#le solicita al usurio la cantidad de materias y la cantidad de notas por materia
+W=int(input("ingrese la cantidad de materias a calcular: "))
+
+
+#decimos que segun la cantidad de materias siempre y cuando sea menor o iguala 7 entonces que me pregunte la cantidad de notas , la cantidad de materias
+#ejemplo: si son 3 materias y 2 notas , me pedira 3 veces las 2 notas de cada materia y su respectivo porcentaje por nota
+for i in range(W):
+    N = int(input(f"Por favor ingrese el valor de la cantidad de notas por materia {i+1}: "))
+    for j in range(N):
+        Nota = input(f"Ingrese el valor de la nota {j + 1} para la materia {i+1}:   ")
+        porcentaje =input(f"Ingrese el porcentaje de la nota {j + 1}: de la materia {i+1}: ")
+        globals()[f"el_porcentaje_Nota_{j+1}_para_la_materia_{i+1}"]=float(porcentaje) #crea una variable con un nombre unico para cada porcentaje
+        globals()[f"la_Nota_{j + 1}de_la_materia_{i + 1}"] =float(Nota)
+
+#SACAMOS EL PROMEDIO DE LAS NOTAS MULTIPLICANDO EL VALOR DE CADA MATERIA Y SU RESPECTIVO VALOR DE PORCENTAJE
+Promedio_ponderado = (((la_Nota_1de_la_materia_1)*(el_porcentaje_Nota_1_para_la_materia_1)+(la_Nota_2de_la_materia_1)*(el_porcentaje_Nota_2_para_la_materia_1)+(la_Nota_3de_la_materia_1)*(el_porcentaje_Nota_3_para_la_materia_1))/((el_porcentaje_Nota_1_para_la_materia_1)+el_porcentaje_Nota_2_para_la_materia_1+el_porcentaje_Nota_3_para_la_materia_1))
+print(f"el promedio de notas de la materia es: {Promedio_ponderado}")
+
+
+#Si tenemos 3 materias y 3 notas entonces a la hora de calcular Promedio_ponderado sumaremos ((la_Nota_1de_la_materia_1)*(el_porcentaje_Nota_1_para_la_materia_1) mas cada una de sus otras notas tal como se encuentra arriba solo que ahora se adicionaria (la_Nota_1de_la_materia_2)*(el_porcentaje_Nota_1_para_la_materia_2) y asi sucesivamente
